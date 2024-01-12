@@ -13,6 +13,7 @@ const Home = () => {
   const [open, setOpen] = useState(false);
   const [size, setSize] = useState();
   const [file, setFile] = useState();
+  const [getFile, setGetFile] = useState();
   const handleOpen = (value) => {
     setSize(value);
     setOpen(true);
@@ -37,12 +38,22 @@ const Home = () => {
     formData.append("file", file);
     axios.post("http://localhost:5000/upload", formData)
     .then((res) => {
-      console.log(res);
+      console.log(res.data);
     })
     .catch((err) => {
       console.log(err);
     });
   }
+
+  // get the data
+  axios.get("http://localhost:5000/upload")
+  .then((res) => {
+    console.log(res.data);
+    setGetFile(res.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
   return (
     <section className="py-10 px-6 bg-gray-200 overflow-x-scroll">
       <div></div>
@@ -123,7 +134,7 @@ const Home = () => {
                       <MdAttachFile />
                     </Button>
 
-                    <p>25</p>
+                    <p>{getFile?.length}</p>
                     <DatePicker className="w-32" format="dd.MM.yyyy" />
                   </section>
                 </div>
