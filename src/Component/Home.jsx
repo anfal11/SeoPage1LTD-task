@@ -33,7 +33,7 @@ const Home = () => {
 
       <section className="flex w-[2700px]">
      {/* first col */}
-     <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[1000px]">
+     <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
      <div className="flex flex-col gap-5 px-3 ">
           {data?.map((course) => (
             <div className="w-[400px] ">
@@ -114,7 +114,7 @@ const Home = () => {
      </section>
  
       {/* 2nd col */}
-      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[1000px]">
+      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
      <div className="flex flex-col gap-5 px-3 ">
           {data?.map((course) => (
             <div className="w-[400px] ">
@@ -195,7 +195,7 @@ const Home = () => {
      </section>
 
       {/* 3rd col */}
-      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[1000px]">
+      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
      <div className="flex flex-col gap-5 px-3 ">
           {data?.map((course) => (
             <div className="w-[400px] ">
@@ -275,7 +275,7 @@ const Home = () => {
      </section>
 
       {/* 4th col */}
-      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[1000px]">
+      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
      <div className="flex flex-col gap-5 px-3 ">
           {data?.map((course) => (
             <div className="w-[400px] ">
@@ -355,7 +355,7 @@ const Home = () => {
      </section>
 
        {/* 5th col */}
-       <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[1000px]">
+       <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
      <div className="flex flex-col gap-5 px-3 ">
           {data?.map((course) => (
             <div className="w-[400px] ">
@@ -435,7 +435,7 @@ const Home = () => {
      </section>
 
       {/* 6th col */}
-      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[1000px]">
+      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
      <div className="flex flex-col gap-5 px-3 ">
           {data?.map((course) => (
             <div className="w-[400px] ">
