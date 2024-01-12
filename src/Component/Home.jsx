@@ -6,11 +6,13 @@ import { IoMdCopy } from "react-icons/io";
 import { MdAttachFile } from "react-icons/md";
 import { FaRegComments } from "react-icons/fa";
 import { Button, DatePicker, Modal, Placeholder, Uploader } from "rsuite";
+import axios from "axios";
 
 const Home = () => {
   const [data, setData] = useState(null);
   const [open, setOpen] = useState(false);
   const [size, setSize] = useState();
+  const [file, setFile] = useState();
   const handleOpen = (value) => {
     setSize(value);
     setOpen(true);
@@ -28,6 +30,18 @@ const Home = () => {
 
   function handleCopy(value) {
     navigator.clipboard.writeText(value);
+  }
+
+  const upload = () => {
+    const formData = new FormData();
+    formData.append("file", file);
+    axios.post("http://localhost:5000/upload", formData)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
   return (
     <section className="py-10 px-6 bg-gray-200 overflow-x-scroll">
@@ -128,7 +142,8 @@ const Home = () => {
               {/* <Uploader>
       <Button>Select files...</Button>
     </Uploader> */}
-              <input type="file" name="" id="" />
+              <input type="file" onChange={(e)=>  setFile(e.target.files[0])}  />
+              <button onClick={upload} className="p-1 rounded-md bg-black text-white"> Upload </button>
             </Modal.Body>
           </Modal>
         </section>
