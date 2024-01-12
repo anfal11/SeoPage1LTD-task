@@ -5,11 +5,17 @@ import { FaTasks } from "react-icons/fa";
 import { IoMdCopy } from "react-icons/io";
 import { MdAttachFile } from "react-icons/md";
 import { FaRegComments } from "react-icons/fa";
-import { DatePicker } from "rsuite";
-
+import { Button, DatePicker, Modal, Placeholder, Uploader } from "rsuite";
 
 const Home = () => {
   const [data, setData] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [size, setSize] = useState();
+  const handleOpen = (value) => {
+    setSize(value);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     fetch("./data.json")
@@ -25,497 +31,518 @@ const Home = () => {
   }
   return (
     <section className="py-10 px-6 bg-gray-200 overflow-x-scroll">
-      <div>
-
-
-   
-      </div>
+      <div></div>
 
       <section className="flex w-[2700px]">
-     {/* first col */}
-     <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
-     <div className="flex flex-col gap-5 px-3 ">
-          {data?.map((course) => (
-            <div className="w-[400px] ">
-              <div key={course?._id} className="h-100 bg-white p-3">
-                {/* row1 */}
+        {/* first col */}
+        <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
+          <div className="flex flex-col gap-5 px-3 ">
+            {data?.map((course) => (
+              <div className="w-[400px] ">
+                <div key={course?._id} className="h-100 bg-white p-3">
+                  {/* row1 */}
 
-                <section className="flex gap-20">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img1}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
+                  <section className="flex gap-20">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img1}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
 
-                    <h5 className="text-medium font-semibold">client name</h5>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img2}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
+                      <h5 className="text-medium font-semibold">client name</h5>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img2}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
 
-                    <h5 className="text-medium font-semibold">Sadik Istiyak</h5>
-                  </div>
-                </section>
-                {/* row2 */}
-                <section className="mt-3 flex gap-32 items-center">
-                  <span className="flex items-center gap-2">
-                    <FaTasks />
-                    <p className="text-medium font-semibold">
-                      {course.description}
+                      <h5 className="text-medium font-semibold">
+                        Sadik Istiyak
+                      </h5>
+                    </div>
+                  </section>
+                  {/* row2 */}
+                  <section className="mt-3 flex gap-32 items-center">
+                    <span className="flex items-center gap-2">
+                      <FaTasks />
+                      <p className="text-medium font-semibold">
+                        {course.description}
+                      </p>
+                    </span>
+                    <p
+                      onClick={() => handleCopy(course.description)}
+                      className="text-medium font-semibold"
+                    >
+                      <IoMdCopy className="cursor-pointer" />
                     </p>
-                  </span>
-                  <p
-                    onClick={() => handleCopy(course.description)}
-                    className="text-medium font-semibold"
-                  >
-                    <IoMdCopy className="cursor-pointer" />
-                  </p>
-                </section>
+                  </section>
 
-                {/* row3 */}
+                  {/* row3 */}
 
-                <section className="mt-3 flex gap-2 items-center">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img3}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="">
-                    <img
-                      src={course.img4}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
+                  <section className="mt-3 flex gap-2 items-center">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img3}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+                    <div className="">
+                      <img
+                        src={course.img4}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
 
-                  <p className="bg-gray-200 rounded-full p-2">
-                    {course.client_count}+
-                  </p>
-                  <p>
-                    <FaRegComments />
-                  </p>
-                  <p>{course.comment_count}</p>
-                  <p>
-                    <MdAttachFile />
-                  </p>
-                  <p>25</p>
-                  <DatePicker className="w-32" format="dd.MM.yyyy" />
-                </section>
-              </div>
-            </div>
-          ))}
-        </div>
-     </section>
- 
-      {/* 2nd col */}
-      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
-     <div className="flex flex-col gap-5 px-3 ">
-          {data?.map((course) => (
-            <div className="w-[400px] ">
-              <div key={course?._id} className="h-100 bg-white p-3">
-                {/* row1 */}
-                <section className="flex gap-20">
-                
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img1}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-
-                    <h5 className="text-medium font-semibold">client name</h5>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img2}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-
-                    <h5 className="text-medium font-semibold">Sadik Istiyak</h5>
-                  </div>
-                </section>
-                {/* row2 */}
-                <section className="mt-3 flex gap-32 items-center">
-                  <span className="flex items-center gap-2">
-                    <FaTasks />
-                    <p className="text-medium font-semibold">
-                      {course.description}
+                    <p className="bg-gray-200 rounded-full p-2">
+                      {course.client_count}+
                     </p>
-                  </span>
-                  <p
-                    onClick={() => handleCopy(course.description)}
-                    className="text-medium font-semibold"
-                  >
-                    <IoMdCopy className="cursor-pointer" />
-                  </p>
-                </section>
-
-                {/* row3 */}
-
-                <section className="mt-3 flex gap-2 items-center">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img3}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="">
-                    <img
-                      src={course.img4}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-
-                  <p className="bg-gray-200 rounded-full p-2">
-                    {course.client_count}+
-                  </p>
-                  <p>
-                    <FaRegComments />
-                  </p>
-                  <p>{course.comment_count}</p>
-                  <p>
-                    <MdAttachFile />
-                  </p>
-                  <p>25</p>
-                  <DatePicker className="w-32" format="dd.MM.yyyy" />
-                </section>
-              </div>
-            </div>
-          ))}
-        </div>
-     </section>
-
-      {/* 3rd col */}
-      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
-     <div className="flex flex-col gap-5 px-3 ">
-          {data?.map((course) => (
-            <div className="w-[400px] ">
-              <div key={course?._id} className="h-100 bg-white p-3">
-                {/* row1 */}
-                <section className="flex gap-20">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img1}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-
-                    <h5 className="text-medium font-semibold">client name</h5>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img2}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-
-                    <h5 className="text-medium font-semibold">Sadik Istiyak</h5>
-                  </div>
-                </section>
-                {/* row2 */}
-                <section className="mt-3 flex gap-32 items-center">
-                  <span className="flex items-center gap-2">
-                    <FaTasks />
-                    <p className="text-medium font-semibold">
-                      {course.description}
+                    <p>
+                      <FaRegComments />
                     </p>
-                  </span>
-                  <p
-                    onClick={() => handleCopy(course.description)}
-                    className="text-medium font-semibold"
-                  >
-                    <IoMdCopy className="cursor-pointer" />
-                  </p>
-                </section>
+                    <p>{course.comment_count}</p>
+                    <Button size="sm" onClick={() => handleOpen("sm")}>
+                      <MdAttachFile />
+                    </Button>
 
-                {/* row3 */}
-
-                <section className="mt-3 flex gap-2 items-center">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img3}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="">
-                    <img
-                      src={course.img4}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-
-                  <p className="bg-gray-200 rounded-full p-2">
-                    {course.client_count}+
-                  </p>
-                  <p>
-                    <FaRegComments />
-                  </p>
-                  <p>{course.comment_count}</p>
-                  <p>
-                    <MdAttachFile />
-                  </p>
-                  <p>25</p>
-                  <DatePicker className="w-32" format="dd.MM.yyyy" />
-                </section>
+                    <p>25</p>
+                    <DatePicker className="w-32" format="dd.MM.yyyy" />
+                  </section>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-     </section>
+            ))}
+          </div>
+        </section>
+        {/* modal 1 */}
+        <section>
+          <Modal size={size} open={open} onClose={handleClose}>
+            <Modal.Header>
+              <Modal.Title></Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {/* <Placeholder.Paragraph rows={size === 'full' ? 100 : 10} /> */}
+              {/* <Uploader>
+      <Button>Select files...</Button>
+    </Uploader> */}
+              <input type="file" name="" id="" />
+            </Modal.Body>
+          </Modal>
+        </section>
 
-      {/* 4th col */}
-      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
-     <div className="flex flex-col gap-5 px-3 ">
-          {data?.map((course) => (
-            <div className="w-[400px] ">
-              <div key={course?._id} className="h-100 bg-white p-3">
-                {/* row1 */}
-                <section className="flex gap-20">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img1}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
+        {/* 2nd col */}
+        <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
+          <div className="flex flex-col gap-5 px-3 ">
+            {data?.map((course) => (
+              <div className="w-[400px] ">
+                <div key={course?._id} className="h-100 bg-white p-3">
+                  {/* row1 */}
+                  <section className="flex gap-20">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img1}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
 
-                    <h5 className="text-medium font-semibold">client name</h5>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img2}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
+                      <h5 className="text-medium font-semibold">client name</h5>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img2}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
 
-                    <h5 className="text-medium font-semibold">Sadik Istiyak</h5>
-                  </div>
-                </section>
-                {/* row2 */}
-                <section className="mt-3 flex gap-32 items-center">
-                  <span className="flex items-center gap-2">
-                    <FaTasks />
-                    <p className="text-medium font-semibold">
-                      {course.description}
+                      <h5 className="text-medium font-semibold">
+                        Sadik Istiyak
+                      </h5>
+                    </div>
+                  </section>
+                  {/* row2 */}
+                  <section className="mt-3 flex gap-32 items-center">
+                    <span className="flex items-center gap-2">
+                      <FaTasks />
+                      <p className="text-medium font-semibold">
+                        {course.description}
+                      </p>
+                    </span>
+                    <p
+                      onClick={() => handleCopy(course.description)}
+                      className="text-medium font-semibold"
+                    >
+                      <IoMdCopy className="cursor-pointer" />
                     </p>
-                  </span>
-                  <p
-                    onClick={() => handleCopy(course.description)}
-                    className="text-medium font-semibold"
-                  >
-                    <IoMdCopy className="cursor-pointer" />
-                  </p>
-                </section>
+                  </section>
 
-                {/* row3 */}
+                  {/* row3 */}
 
-                <section className="mt-3 flex gap-2 items-center">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img3}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="">
-                    <img
-                      src={course.img4}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
+                  <section className="mt-3 flex gap-2 items-center">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img3}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+                    <div className="">
+                      <img
+                        src={course.img4}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
 
-                  <p className="bg-gray-200 rounded-full p-2">
-                    {course.client_count}+
-                  </p>
-                  <p>
-                    <FaRegComments />
-                  </p>
-                  <p>{course.comment_count}</p>
-                  <p>
-                    <MdAttachFile />
-                  </p>
-                  <p>25</p>
-                  <DatePicker className="w-32" format="dd.MM.yyyy" />
-                </section>
-              </div>
-            </div>
-          ))}
-        </div>
-     </section>
-
-       {/* 5th col */}
-       <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
-     <div className="flex flex-col gap-5 px-3 ">
-          {data?.map((course) => (
-            <div className="w-[400px] ">
-              <div key={course?._id} className="h-100 bg-white p-3">
-                {/* row1 */}
-                <section className="flex gap-20">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img1}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-
-                    <h5 className="text-medium font-semibold">client name</h5>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img2}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-
-                    <h5 className="text-medium font-semibold">Sadik Istiyak</h5>
-                  </div>
-                </section>
-                {/* row2 */}
-                <section className="mt-3 flex gap-32 items-center">
-                  <span className="flex items-center gap-2">
-                    <FaTasks />
-                    <p className="text-medium font-semibold">
-                      {course.description}
+                    <p className="bg-gray-200 rounded-full p-2">
+                      {course.client_count}+
                     </p>
-                  </span>
-                  <p
-                    onClick={() => handleCopy(course.description)}
-                    className="text-medium font-semibold"
-                  >
-                    <IoMdCopy className="cursor-pointer" />
-                  </p>
-                </section>
-
-                {/* row3 */}
-
-                <section className="mt-3 flex gap-2 items-center">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img3}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="">
-                    <img
-                      src={course.img4}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-
-                  <p className="bg-gray-200 rounded-full p-2">
-                    {course.client_count}+
-                  </p>
-                  <p>
-                    <FaRegComments />
-                  </p>
-                  <p>{course.comment_count}</p>
-                  <p>
-                    <MdAttachFile />
-                  </p>
-                  <p>25</p>
-                  <DatePicker className="w-32" format="dd.MM.yyyy" />
-                </section>
-              </div>
-            </div>
-          ))}
-        </div>
-     </section>
-
-      {/* 6th col */}
-      <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
-     <div className="flex flex-col gap-5 px-3 ">
-          {data?.map((course) => (
-            <div className="w-[400px] ">
-              <div key={course?._id} className="h-100 bg-white p-3">
-                {/* row1 */}
-                <section className="flex gap-20">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img1}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-
-                    <h5 className="text-medium font-semibold">client name</h5>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img2}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-
-                    <h5 className="text-medium font-semibold">Sadik Istiyak</h5>
-                  </div>
-                </section>
-                {/* row2 */}
-                <section className="mt-3 flex gap-32 items-center">
-                  <span className="flex items-center gap-2">
-                    <FaTasks />
-                    <p className="text-medium font-semibold">
-                      {course.description}
+                    <p>
+                      <FaRegComments />
                     </p>
-                  </span>
-                  <p
-                    onClick={() => handleCopy(course.description)}
-                    className="text-medium font-semibold"
-                  >
-                    <IoMdCopy className="cursor-pointer" />
-                  </p>
-                </section>
-
-                {/* row3 */}
-
-                <section className="mt-3 flex gap-2 items-center">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={course.img3}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="">
-                    <img
-                      src={course.img4}
-                      className="h-10 w-10 rounded-full"
-                      alt="..."
-                    />
-                  </div>
-
-                  <p className="bg-gray-200 rounded-full p-2">
-                    {course.client_count}+
-                  </p>
-                  <p>
-                    <FaRegComments />
-                  </p>
-                  <p>{course.comment_count}</p>
-                  <p>
-                    <MdAttachFile />
-                  </p>
-                  <p>25</p>
-                  <DatePicker className="w-32" format="dd.MM.yyyy" />
-                </section>
+                    <p>{course.comment_count}</p>
+                    <p>
+                      <MdAttachFile />
+                    </p>
+                    <p>25</p>
+                    <DatePicker className="w-32" format="dd.MM.yyyy" />
+                  </section>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-     </section>
-     
+            ))}
+          </div>
+        </section>
+
+        {/* 3rd col */}
+        <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
+          <div className="flex flex-col gap-5 px-3 ">
+            {data?.map((course) => (
+              <div className="w-[400px] ">
+                <div key={course?._id} className="h-100 bg-white p-3">
+                  {/* row1 */}
+                  <section className="flex gap-20">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img1}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+
+                      <h5 className="text-medium font-semibold">client name</h5>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img2}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+
+                      <h5 className="text-medium font-semibold">
+                        Sadik Istiyak
+                      </h5>
+                    </div>
+                  </section>
+                  {/* row2 */}
+                  <section className="mt-3 flex gap-32 items-center">
+                    <span className="flex items-center gap-2">
+                      <FaTasks />
+                      <p className="text-medium font-semibold">
+                        {course.description}
+                      </p>
+                    </span>
+                    <p
+                      onClick={() => handleCopy(course.description)}
+                      className="text-medium font-semibold"
+                    >
+                      <IoMdCopy className="cursor-pointer" />
+                    </p>
+                  </section>
+
+                  {/* row3 */}
+
+                  <section className="mt-3 flex gap-2 items-center">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img3}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+                    <div className="">
+                      <img
+                        src={course.img4}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+
+                    <p className="bg-gray-200 rounded-full p-2">
+                      {course.client_count}+
+                    </p>
+                    <p>
+                      <FaRegComments />
+                    </p>
+                    <p>{course.comment_count}</p>
+                    <p>
+                      <MdAttachFile />
+                    </p>
+                    <p>25</p>
+                    <DatePicker className="w-32" format="dd.MM.yyyy" />
+                  </section>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 4th col */}
+        <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
+          <div className="flex flex-col gap-5 px-3 ">
+            {data?.map((course) => (
+              <div className="w-[400px] ">
+                <div key={course?._id} className="h-100 bg-white p-3">
+                  {/* row1 */}
+                  <section className="flex gap-20">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img1}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+
+                      <h5 className="text-medium font-semibold">client name</h5>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img2}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+
+                      <h5 className="text-medium font-semibold">
+                        Sadik Istiyak
+                      </h5>
+                    </div>
+                  </section>
+                  {/* row2 */}
+                  <section className="mt-3 flex gap-32 items-center">
+                    <span className="flex items-center gap-2">
+                      <FaTasks />
+                      <p className="text-medium font-semibold">
+                        {course.description}
+                      </p>
+                    </span>
+                    <p
+                      onClick={() => handleCopy(course.description)}
+                      className="text-medium font-semibold"
+                    >
+                      <IoMdCopy className="cursor-pointer" />
+                    </p>
+                  </section>
+
+                  {/* row3 */}
+
+                  <section className="mt-3 flex gap-2 items-center">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img3}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+                    <div className="">
+                      <img
+                        src={course.img4}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+
+                    <p className="bg-gray-200 rounded-full p-2">
+                      {course.client_count}+
+                    </p>
+                    <p>
+                      <FaRegComments />
+                    </p>
+                    <p>{course.comment_count}</p>
+                    <p>
+                      <MdAttachFile />
+                    </p>
+                    <p>25</p>
+                    <DatePicker className="w-32" format="dd.MM.yyyy" />
+                  </section>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 5th col */}
+        <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
+          <div className="flex flex-col gap-5 px-3 ">
+            {data?.map((course) => (
+              <div className="w-[400px] ">
+                <div key={course?._id} className="h-100 bg-white p-3">
+                  {/* row1 */}
+                  <section className="flex gap-20">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img1}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+
+                      <h5 className="text-medium font-semibold">client name</h5>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img2}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+
+                      <h5 className="text-medium font-semibold">
+                        Sadik Istiyak
+                      </h5>
+                    </div>
+                  </section>
+                  {/* row2 */}
+                  <section className="mt-3 flex gap-32 items-center">
+                    <span className="flex items-center gap-2">
+                      <FaTasks />
+                      <p className="text-medium font-semibold">
+                        {course.description}
+                      </p>
+                    </span>
+                    <p
+                      onClick={() => handleCopy(course.description)}
+                      className="text-medium font-semibold"
+                    >
+                      <IoMdCopy className="cursor-pointer" />
+                    </p>
+                  </section>
+
+                  {/* row3 */}
+
+                  <section className="mt-3 flex gap-2 items-center">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img3}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+                    <div className="">
+                      <img
+                        src={course.img4}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+
+                    <p className="bg-gray-200 rounded-full p-2">
+                      {course.client_count}+
+                    </p>
+                    <p>
+                      <FaRegComments />
+                    </p>
+                    <p>{course.comment_count}</p>
+                    <p>
+                      <MdAttachFile />
+                    </p>
+                    <p>25</p>
+                    <DatePicker className="w-32" format="dd.MM.yyyy" />
+                  </section>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 6th col */}
+        <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
+          <div className="flex flex-col gap-5 px-3 ">
+            {data?.map((course) => (
+              <div className="w-[400px] ">
+                <div key={course?._id} className="h-100 bg-white p-3">
+                  {/* row1 */}
+                  <section className="flex gap-20">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img1}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+
+                      <h5 className="text-medium font-semibold">client name</h5>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img2}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+
+                      <h5 className="text-medium font-semibold">
+                        Sadik Istiyak
+                      </h5>
+                    </div>
+                  </section>
+                  {/* row2 */}
+                  <section className="mt-3 flex gap-32 items-center">
+                    <span className="flex items-center gap-2">
+                      <FaTasks />
+                      <p className="text-medium font-semibold">
+                        {course.description}
+                      </p>
+                    </span>
+                    <p
+                      onClick={() => handleCopy(course.description)}
+                      className="text-medium font-semibold"
+                    >
+                      <IoMdCopy className="cursor-pointer" />
+                    </p>
+                  </section>
+
+                  {/* row3 */}
+
+                  <section className="mt-3 flex gap-2 items-center">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={course.img3}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+                    <div className="">
+                      <img
+                        src={course.img4}
+                        className="h-10 w-10 rounded-full"
+                        alt="..."
+                      />
+                    </div>
+
+                    <p className="bg-gray-200 rounded-full p-2">
+                      {course.client_count}+
+                    </p>
+                    <p>
+                      <FaRegComments />
+                    </p>
+                    <p>{course.comment_count}</p>
+                    <p>
+                      <MdAttachFile />
+                    </p>
+                    <p>25</p>
+                    <DatePicker className="w-32" format="dd.MM.yyyy" />
+                  </section>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </section>
-
     </section>
   );
 };
