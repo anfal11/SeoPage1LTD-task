@@ -8,6 +8,7 @@ import './index.css'
 import Home from './Component/Home';
 import 'rsuite/styles/index.less';
 import 'rsuite/dist/rsuite.min.css'
+import { Toaster } from 'sonner';
 
 const router = createBrowserRouter([
   {
@@ -19,5 +20,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster />
   </React.StrictMode>,
 )
