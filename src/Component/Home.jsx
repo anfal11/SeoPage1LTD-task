@@ -70,8 +70,6 @@ const Home = () => {
 
   return (
     <section className="py-10 px-6 bg-gray-200 overflow-x-scroll">
-      <div></div>
-
       <section className="flex w-[2700px]">
         {/* first col */}
         <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
