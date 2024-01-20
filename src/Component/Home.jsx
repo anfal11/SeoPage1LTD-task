@@ -75,8 +75,8 @@ const Home = () => {
         <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
           <div className="flex flex-col gap-5 px-3 ">
             {data?.map((course) => (
-              <div className="w-[400px] ">
-                <div key={course?._id} className="h-100 bg-white p-3">
+              <div key={course?._id} className="w-[400px] ">
+                <div  className="h-100 bg-white p-3">
                   {/* row1 */}
 
                   <section className="flex gap-20">
@@ -162,17 +162,13 @@ const Home = () => {
               <Modal.Title></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              {/* <Placeholder.Paragraph rows={size === 'full' ? 100 : 10} /> */}
-              {/* <Uploader>
-      <Button>Select files...</Button>
-    </Uploader> */}
+    
               <input type="file" onChange={(e) => setFile(e.target.files[0])} />
               <button
                 onClick={upload}
                 className="p-1 rounded-md bg-black text-white"
               >
-                {" "}
-                Upload{" "}
+                Upload
               </button>
             </Modal.Body>
           </Modal>
@@ -263,28 +259,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* modal 2 */}
-        <section>
-          <Modal size={size} open={open} onClose={handleClose}>
-            <Modal.Header>
-              <Modal.Title></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {/* <Placeholder.Paragraph rows={size === 'full' ? 100 : 10} /> */}
-              {/* <Uploader>
-      <Button>Select files...</Button>
-    </Uploader> */}
-              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-              <button
-                onClick={upload}
-                className="p-1 rounded-md bg-black text-white"
-              >
-                {" "}
-                Upload{" "}
-              </button>
-            </Modal.Body>
-          </Modal>
-        </section>
 
         {/* 3rd col */}
         <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
@@ -371,28 +345,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* modal 3 */}
-        <section>
-          <Modal size={size} open={open} onClose={handleClose}>
-            <Modal.Header>
-              <Modal.Title></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {/* <Placeholder.Paragraph rows={size === 'full' ? 100 : 10} /> */}
-              {/* <Uploader>
-      <Button>Select files...</Button>
-    </Uploader> */}
-              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-              <button
-                onClick={upload}
-                className="p-1 rounded-md bg-black text-white"
-              >
-                {" "}
-                Upload{" "}
-              </button>
-            </Modal.Body>
-          </Modal>
-        </section>
 
         {/* 4th col */}
         <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
@@ -478,28 +430,7 @@ const Home = () => {
             ))}
           </div>
         </section>
-        {/* modal 4 */}
-        <section>
-          <Modal size={size} open={open} onClose={handleClose}>
-            <Modal.Header>
-              <Modal.Title></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {/* <Placeholder.Paragraph rows={size === 'full' ? 100 : 10} /> */}
-              {/* <Uploader>
-      <Button>Select files...</Button>
-    </Uploader> */}
-              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-              <button
-                onClick={upload}
-                className="p-1 rounded-md bg-black text-white"
-              >
-                {" "}
-                Upload{" "}
-              </button>
-            </Modal.Body>
-          </Modal>
-        </section>
+
 
         {/* 5th col */}
         <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
@@ -585,28 +516,7 @@ const Home = () => {
             ))}
           </div>
         </section>
-        {/* modal 5 */}
-        <section>
-          <Modal size={size} open={open} onClose={handleClose}>
-            <Modal.Header>
-              <Modal.Title></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {/* <Placeholder.Paragraph rows={size === 'full' ? 100 : 10} /> */}
-              {/* <Uploader>
-      <Button>Select files...</Button>
-    </Uploader> */}
-              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-              <button
-                onClick={upload}
-                className="p-1 rounded-md bg-black text-white"
-              >
-                {" "}
-                Upload{" "}
-              </button>
-            </Modal.Body>
-          </Modal>
-        </section>
+
 
         {/* 6th col */}
         <section className="scrollbar scrollbar-thumb-blue-600 scrollbar-track-gray-100 overflow-y-scroll h-[850px]">
@@ -692,28 +602,7 @@ const Home = () => {
             ))}
           </div>
         </section>
-        {/* modal 6 */}
-        <section>
-          <Modal size={size} open={open} onClose={handleClose}>
-            <Modal.Header>
-              <Modal.Title></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {/* <Placeholder.Paragraph rows={size === 'full' ? 100 : 10} /> */}
-              {/* <Uploader>
-      <Button>Select files...</Button>
-    </Uploader> */}
-              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-              <button
-                onClick={upload}
-                className="p-1 rounded-md bg-black text-white"
-              >
-                {" "}
-                Upload{" "}
-              </button>
-            </Modal.Body>
-          </Modal>
-        </section>
+
       </section>
     </section>
   );
